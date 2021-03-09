@@ -19,7 +19,6 @@ const useObtenerPresupuestos = () => {
 
 		return unsuscribe;
 	}, [usuario]);
-	console.log(presupuestos);
 	return [presupuestos];
 }
  
