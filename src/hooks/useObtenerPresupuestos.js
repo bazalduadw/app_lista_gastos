@@ -10,8 +10,7 @@ const useObtenerPresupuestos = () => {
 		const unsuscribe = db.collection('presupuestos')
 		.where('uidUsuario', '==', usuario.uid)
 		//.get()
-		.onSnapshot((snapshot) => {	
-			console.log(snapshot)		
+		.onSnapshot((snapshot) => {		
 			cambiarPresupuestos(snapshot.docs.map((presupuesto) => {
 				return {...presupuesto.data(), id: presupuesto.id}
 			}));

@@ -36,6 +36,9 @@ import { es } from "date-fns/locale";
 import borrarGasto from "./../firebase/borrarGasto";
 import useObtenerPresupuestos from "../hooks/useObtenerPresupuestos";
 import { ReactComponent as IconoPlus } from "./../imagenes/plus.svg";
+import editarPresupuesto from "../firebase/editarPresupuesto";
+import getUnixTime from 'date-fns/getUnixTime'
+
 
 // cambiar componente a class component
 // 
@@ -43,12 +46,12 @@ import { ReactComponent as IconoPlus } from "./../imagenes/plus.svg";
 const ListaDePresupuestos = () => {
   const [presupuestos] = useObtenerPresupuestos();
   const [listaPresupuestos, cambiarListaPresupuestos] = useState([]);
+	const [fecha, cambiarFecha] = useState(new Date());
 
 
   useEffect(() => {
 		// Comprobamos si ya hay algun gasto.
 		// De ser asi establecemos todo el state con los valores del gasto.
-		console.log(presupuestos);
     if (listaPresupuestos.length == 0) {
       cambiarListaPresupuestos(presupuestos);
   }
@@ -56,8 +59,6 @@ const ListaDePresupuestos = () => {
 
 
   const handleChange = (e) => {
-    // console.log(event.target.name)
-    // console.log(event.target.value)
 
     let lista = presupuestos.filter((a, i)=> {
       if (a.id   === e.target.name ) {
@@ -71,7 +72,24 @@ const ListaDePresupuestos = () => {
 
   const handleSubmit = (e) => {
 		e.preventDefault();
-    console.log(listaPresupuestos);
+
+    listaPresupuestos.forEach((v,i)=> {
+      editarPresupuesto({
+        id: v.id,
+        categoria: v.categoria,
+        cantidad: v.cantidad,
+        fecha: getUnixTime(fecha)
+      }).then(() => {
+        //history.push('/lista');
+      }).catch((error) => {
+        console.log("some error came" + error);
+      })
+
+
+    });
+
+    alert("everything updated")
+    
 
   };
 
