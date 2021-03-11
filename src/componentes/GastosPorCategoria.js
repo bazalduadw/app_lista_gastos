@@ -76,31 +76,34 @@ const GastosPorCategoria = () => {
           );
         })}
       </ListaDeCategorias>
-		
-
-	  {listaParaGrafica.length > 0 && listaParaGrafica.map((elemento, index) => {
-		  return (
+      {listaParaGrafica.length > 0 &&
       <Chart
-        width={"600px"}
-        height={"600px"}
-        chartType="PieChart"
-        loader={<div>Loading Chart</div>}
-        data={[
-          ["Rubro", "Cantidad"],
-          ["Presupuesto", Number(elemento.presupuesto )],
-		  ["Cantidad actual", Number(elemento.cantidad )],
-
-        ]}
-        options={{
-          legend: "none",
-          pieSliceText: "label",
-          title: elemento.categoria ,
-          pieStartAngle: 100,
-        }}
-        //rootProps={{ "data-testid": "4" }}
-      />
-	   );
-	})}
+  width={'700px'}
+  height={'400px'}
+  chartType="BarChart"
+  loader={<div>Loading Chart</div>}
+  data={[
+    ['Categoria', 'Presupuesto', 'Gastos del mes'],
+    [listaParaGrafica[0].categoria, listaParaGrafica[0].presupuesto, listaParaGrafica[0].cantidad],
+    [listaParaGrafica[1].categoria, listaParaGrafica[1].presupuesto, listaParaGrafica[1].cantidad],
+    [listaParaGrafica[2].categoria, listaParaGrafica[2].presupuesto, listaParaGrafica[2].cantidad],
+    [listaParaGrafica[3].categoria, listaParaGrafica[3].presupuesto, listaParaGrafica[3].cantidad],
+  ]}
+  options={{
+    title: 'Gastos vs Presupuestos',
+    chartArea: { width: '50%' },
+    hAxis: {
+      title: 'Cantidad',
+      minValue: 0,
+    },
+    vAxis: {
+      title: 'Categoria',
+    },
+  }}
+  // For tests
+  rootProps={{ 'data-testid': '1' }}
+/>
+}
 	</div>
   
 
@@ -161,5 +164,30 @@ export default GastosPorCategoria;
       />
 
 
+		
+
+	  {listaParaGrafica.length > 0 && listaParaGrafica.map((elemento, index) => {
+		  return (
+      <Chart
+        width={"600px"}
+        height={"600px"}
+        chartType="PieChart"
+        loader={<div>Loading Chart</div>}
+        data={[
+          ["Rubro", "Cantidad"],
+          ["Presupuesto", Number(elemento.presupuesto )],
+		  ["Cantidad actual", Number(elemento.cantidad )],
+
+        ]}
+        options={{
+          legend: "none",
+          pieSliceText: "label",
+          title: elemento.categoria ,
+          pieStartAngle: 100,
+        }}
+        //rootProps={{ "data-testid": "4" }}
+      />
+	   );
+	})}
 
 */
