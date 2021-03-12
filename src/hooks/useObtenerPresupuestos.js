@@ -8,7 +8,7 @@ const useObtenerPresupuestos = () => {
 
 	useEffect(() => {
 		const unsuscribe = db.collection('presupuestos')
-		.where('uidUsuario', '==', usuario.uid)
+		//.where('uidUsuario', '==', usuario.uid)
 		//.get()
 		.onSnapshot((snapshot) => {		
 			cambiarPresupuestos(snapshot.docs.map((presupuesto) => {
