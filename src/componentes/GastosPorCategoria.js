@@ -6,6 +6,7 @@ import BarraTotalGastado from "./BarraTotalGastado";
 import useObtenerGastosDelMesPorCategoria from "./../hooks/useObtenerGastosDelMesPorCategoria";
 import useObtenerPresupuestos from "../hooks/useObtenerPresupuestos";
 
+
 import {
   ListaDeCategorias,
   ElementoListaCategorias,
