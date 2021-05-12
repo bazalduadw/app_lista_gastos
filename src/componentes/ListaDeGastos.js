@@ -102,6 +102,11 @@ const ListaDeGastos = () => {
 				}
 			</Lista>
 
+
+
+
+
+
 			<BarraTotalGastado/>
 		</>
 	);

@@ -9,6 +9,7 @@ import EditarGasto from './componentes/EditarGasto';
 import GastosPorCategoria from './componentes/GastosPorCategoria';
 import InicioSesion from './componentes/InicioSesion';
 import ListaDeGastos from './componentes/ListaDeGastos';
+import ListaDePresupuestos from './componentes/ListaDePresupuestos';
 import RegistroUsuarios from './componentes/RegistroUsuarios';
 import {Helmet} from "react-helmet";
 import favicon from './imagenes/logo.png';
@@ -40,6 +41,9 @@ const Index = () => {
 							
 							<RutaPrivada path="/categorias">
 								<GastosPorCategoria />
+							</RutaPrivada>
+							<RutaPrivada path="/presupuestos">
+								<ListaDePresupuestos />
 							</RutaPrivada>
 							<RutaPrivada path="/lista">
 								<ListaDeGastos />
